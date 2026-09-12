@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Quiz Platform</title>
+    <link rel="stylesheet" href="./assets/css/style.css?v=2.6">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Mobile Topbar -->
+    <header class="mobile-topbar">
+        <a href="index.html" class="logo-bold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            QUIZ PLATFORM
+        </a>
+        <button id="mobile-menu-toggle" class="menu-toggle-btn" aria-label="Toggle navigation menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <div id="mobile-overlay" class="mobile-overlay"></div>
+
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        <span>QUIZ PLATFORM</span>
+                    </h2>
+                </a>
+                <button id="close-drawer-btn" class="close-drawer-btn">&times;</button>
+            </div>
+            <nav class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span>Browse Quizzes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="leaderboard.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20V10"></path>
+                            <path d="M18 20V4"></path>
+                            <path d="M6 20v-4"></path>
+                        </svg>
+                        <span>Leaderboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="profile-nav-item">
+                    <a href="profile.html" class="nav-link active">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="auth-nav-item">
+                    <!-- Dynamic auth element -->
+                </li>
+            </nav>
+            <div class="sidebar-footer">
+                <div id="user-info" class="user-sidebar-pill" style="display: none;">
+                    <div class="user-details-box">
+                        <div class="user-avatar-sm" id="sidebar-avatar">?</div>
+                        <div class="user-text-content">
+                            <p class="user-name-label"><span id="display-username"></span></p>
+                            <button onclick="logout()" class="logout-link">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 0.75rem; color: #9ca3af;">&copy; 2026 Quiz Platform v2.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="header-meta">
+                <h1 id="profile-heading">My Profile</h1>
+                <p id="profile-email">Track your learning progress, unlocked badges, and quiz history.</p>
+            </header>
+
+            <!-- Stats Overview -->
+            <div class="profile-stats-grid">
+                <div class="stat-card">
+                    <h4>Quizzes Completed</h4>
+                    <div class="stat-number" id="stat-total">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Average Score</h4>
+                    <div class="stat-number" id="stat-avg">0%</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Highest Score</h4>
+                    <div class="stat-number" id="stat-best">0%</div>
+                </div>
+            </div>
+
+            <!-- Achievement Badges -->
+            <div class="badges-container">
+                <div class="badges-header">
+                    <h3>Achievement Badges</h3>
+                    <span class="badge-count" id="badge-counter">0 / 5 Unlocked</span>
+                </div>
+                <div class="badges-grid" id="badges-grid">
+                    <!-- Badges injected by JS -->
+                </div>
+            </div>
+
+            <!-- Quiz History Table -->
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 20px;">Quiz History</h3>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Quiz Category</th>
+                            <th>Score</th>
+                            <th>Time Spent</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                Loading history...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="./assets/js/app.js"></script>
+    <script>
+        const allBadges = [
+            { id: 'first_login', name: 'Starter', desc: 'Signed up and joined Quiz Platform', icon: '🚀' },
+            { id: 'first_quiz', name: 'First Attempt', desc: 'Completed your first quiz test', icon: '🎯' },
+            { id: 'high_scorer', name: 'High Scorer', desc: 'Achieved 80% or higher score', icon: '⭐' },
+            { id: 'perfect_100', name: 'Perfectionist', desc: 'Scored a perfect 100% on a quiz', icon: '🏆' },
+            { id: 'speed_demon', name: 'Speed Demon', desc: 'Finished a quiz in under 25 seconds', icon: '⚡' }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = App.getUser();
+            if (!user || !user.username) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            document.getElementById('profile-heading').textContent = user.username.charAt(0).toUpperCase() + user.username.slice(1) + "'s Profile";
+            if (user.email) {
+                document.getElementById('profile-email').textContent = user.email + ' • Member since 2026';
+            }
+
+            fetch(`/api/profile/${encodeURIComponent(user.username)}`)
+                .then(res => res.json())
+                .then(result => {
+                    if (result.success) {
+                        const { stats, history, user: profileUser } = result;
+
+                        // Stats
+                        document.getElementById('stat-total').textContent = stats.totalQuizzes;
+                        document.getElementById('stat-avg').textContent = stats.avgScore + '%';
+                        document.getElementById('stat-best').textContent = stats.bestScore + '%';
+
+                        // Badges
+                        const unlockedIds = profileUser.badges || [];
+                        let unlockedCount = 0;
+                        const badgesGrid = document.getElementById('badges-grid');
+                        badgesGrid.innerHTML = '';
+
+                        allBadges.forEach(b => {
+                            const isUnlocked = unlockedIds.includes(b.id);
+                            if (isUnlocked) unlockedCount++;
+
+                            const badgeCard = document.createElement('div');
+                            badgeCard.className = `badge-item ${isUnlocked ? 'unlocked' : ''}`;
+                            badgeCard.innerHTML = `
+                                <div class="badge-icon">${b.icon}</div>
+                                <span class="badge-name">${b.name}</span>
+                                <span class="badge-desc">${b.desc}</span>
+                            `;
+                            badgesGrid.appendChild(badgeCard);
+                        });
+
+                        document.getElementById('badge-counter').textContent = `${unlockedCount} / ${allBadges.length} Unlocked`;
+
+                        // History Table
+                        const historyBody = document.getElementById('history-body');
+                        historyBody.innerHTML = '';
+
+                        if (history && history.length > 0) {
+                            history.forEach((h, index) => {
+                                const tr = document.createElement('tr');
+                                const dateStr = new Date(h.createdAt).toLocaleDateString();
+                                tr.innerHTML = `
+                                    <td><strong>#${index + 1}</strong></td>
+                                    <td>${h.category}</td>
+                                    <td><strong style="color: ${h.score >= 60 ? '#059669' : '#dc2626'};">${h.score}%</strong></td>
+                                    <td>${h.time_taken || '01:00'}</td>
+                                    <td>${dateStr}</td>
+                                    <td><span class="status-tag">Completed</span></td>
+                                `;
+                                historyBody.appendChild(tr);
+                            });
+                        } else {
+                            historyBody.innerHTML = `
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                        No quizzes attempted yet. Start your first quiz from the dashboard!
+                                    </td>
+                                </tr>
+                            `;
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error('Profile error:', err);
+                });
+        });
+    </script>
+</body>
+
+</html>

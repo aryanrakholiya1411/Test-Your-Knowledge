@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Dashboard | Browse Quizzes</title>
+    <link rel="stylesheet" href="./assets/css/style.css?v=2.6">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Mobile Topbar for phones & tablets -->
+    <header class="mobile-topbar">
+        <a href="index.html" class="logo-bold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            QUIZ PLATFORM
+        </a>
+        <button id="mobile-menu-toggle" class="menu-toggle-btn" aria-label="Toggle navigation menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <div id="mobile-overlay" class="mobile-overlay"></div>
+
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h2>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        <span>QUIZ PLATFORM</span>
+                    </h2>
+                </a>
+                <button id="close-drawer-btn" class="close-drawer-btn">&times;</button>
+            </div>
+            <nav class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span>Browse Quizzes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="leaderboard.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20V10"></path>
+                            <path d="M18 20V4"></path>
+                            <path d="M6 20v-4"></path>
+                        </svg>
+                        <span>Leaderboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="profile-nav-item" style="display: none;">
+                    <a href="profile.html" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="auth-nav-item">
+                    <!-- Dynamic Auth Link Injected by app.js -->
+                </li>
+            </nav>
+            <div class="sidebar-footer">
+                <div id="user-info" class="user-sidebar-pill" style="display: none;">
+                    <div class="user-details-box">
+                        <div class="user-avatar-sm" id="sidebar-avatar">?</div>
+                        <div class="user-text-content">
+                            <p class="user-name-label"><span id="display-username"></span></p>
+                            <button onclick="logout()" class="logout-link">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 0.75rem; color: #9ca3af;">&copy; 2026 Quiz Platform v2.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="header-meta">
+                <h1>Browse Quizzes</h1>
+                <p>Pick a category and test your expertise with 5 challenging questions.</p>
+            </header>
+
+            <div class="quiz-grid">
+                <!-- 1. HTML -->
+                <a href="quiz.html?id=html" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>HTML Quiz</h3>
+                    <p>Markup language structure, tags, and attributes.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 2. CSS -->
+                <a href="quiz.html?id=css" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>CSS Quiz</h3>
+                    <p>Cascading style sheets, selectors, and layout properties.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 3. JavaScript -->
+                <a href="quiz.html?id=js" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Programming logic, core JS syntax, and functions.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 4. Sport Quiz -->
+                <a href="quiz.html?id=sport" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0"></path>
+                        </svg>
+                    </div>
+                    <h3>Sport Quiz</h3>
+                    <p>Football, Basketball, Tennis, and Olympic history.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 5. General Knowledge -->
+                <a href="quiz.html?id=gk" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <h3>General Knowledge</h3>
+                    <p>World capitals, science, art, and historical facts.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 6. Tech -->
+                <a href="quiz.html?id=tech" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Tech Quiz</h3>
+                    <p>Computer hardware, software companies, and internet history.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 7. Business -->
+                <a href="quiz.html?id=business" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Business Quiz</h3>
+                    <p>CEO founders, famous brands, and global economy.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 8. Language -->
+                <a href="quiz.html?id=language" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Language Quiz</h3>
+                    <p>Linguistics, synonyms, and world-most-spoken languages.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 9. Puzzle -->
+                <a href="quiz.html?id=puzzle" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M9.5 2A2.5 2.5 0 0 1 12 4.5v0A2.5 2.5 0 0 1 14.5 7h0a2.5 2.5 0 0 1-2.5 2.5v0A2.5 2.5 0 0 1 9.5 7h0a2.5 2.5 0 0 1 2.5-2.5">
+                            </path>
+                            <path
+                                d="M7 14.5a2.5 2.5 0 0 1 2.5 2.5v0a2.5 2.5 0 0 1 2.5 2.5h0a2.5 2.5 0 0 1-2.5-2.5v0a2.5 2.5 0 0 1-2.5-2.5h0a2.5 2.5 0 0 1 2.5 2.5">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Puzzle Quiz</h3>
+                    <p>Riddles, logical thinking, and brain teasers.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 10. Indian Polity -->
+                <a href="quiz.html?id=polity" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 21h18"></path>
+                            <path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3"></path>
+                            <path d="M19 21v-4a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v4"></path>
+                            <path d="M9 7h6"></path>
+                            <path d="M12 3v4"></path>
+                        </svg>
+                    </div>
+                    <h3>Indian Polity</h3>
+                    <p>Indian Constitution, Parliament, and fundamental rights.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 11. Science -->
+                <a href="quiz.html?id=science" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M2 22l6-12M22 22l-6-12m-4 8h4M12 2v4a2 2 0 1 0 0 4 2 2 0 1 0 0-4V2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Science Quiz</h3>
+                    <p>Chemical symbols, natural substances, and human biology.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- 12. Movies -->
+                <a href="quiz.html?id=movies" class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                            <line x1="7" y1="2" x2="7" y2="22"></line>
+                            <line x1="17" y1="2" x2="17" y2="22"></line>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <line x1="2" y1="7" x2="7" y2="7"></line>
+                            <line x1="2" y1="17" x2="7" y2="17"></line>
+                            <line x1="17" y1="17" x2="22" y2="17"></line>
+                            <line x1="17" y1="7" x2="22" y2="7"></line>
+                        </svg>
+                    </div>
+                    <h3>Movies Quiz</h3>
+                    <p>Directors, Academy Awards, and cinematic history.</p>
+                    <div class="card-footer">
+                        <span>5 Questions</span>
+                        <span>START &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
